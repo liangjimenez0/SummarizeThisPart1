@@ -5,10 +5,6 @@ import java.nio.file.InvalidPathException;
 import java.nio.file.Path;
 
 public class Main {
-  Path path;
-  OrderFlag orderingFlag;
-  Path outputPath;
-
   public static void main(String[] args) throws IOException {
 
     Path path = null;
@@ -34,6 +30,8 @@ public class Main {
       System.err.println("Cannot assign path");
     }
 
-    Driver.driver(path, orderingFlag, outputPath);
+    if (orderingFlag != null) {
+      Driver.driver(path, orderingFlag, outputPath);
+    }
   }
 }

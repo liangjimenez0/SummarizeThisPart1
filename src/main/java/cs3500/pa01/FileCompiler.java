@@ -1,6 +1,5 @@
 package cs3500.pa01;
 
-import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.file.Path;
 import java.util.ArrayList;
@@ -8,7 +7,7 @@ import java.util.Scanner;
 
 public class FileCompiler {
   StringBuilder builder = new StringBuilder();
-  public void compile(ArrayList<FileInformation> mdFiles) throws IOException {
+  public void compile(ArrayList<FileInformation> mdFiles) {
 
     ArrayList<Path> pathList = new ArrayList<>();
     Scanner input = null;

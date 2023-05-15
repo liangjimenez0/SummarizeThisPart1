@@ -18,14 +18,12 @@ public class FileInformation {
 
   @Override
   public boolean equals(Object other) {
-    if (!(other instanceof FileInformation)) { return false; }
-
-    FileInformation that = (FileInformation)other;
+    if (!(other instanceof FileInformation that)) { return false; }
 
     return this.filePath.equals(that.filePath)
         && this.fileName.equals(that.fileName)
-        && this.dateModified.equals(this.dateModified)
-        && this.dateCreated.equals(this.dateCreated);
+        && this.dateModified.equals(that.dateModified)
+        && this.dateCreated.equals(that.dateCreated);
 
   }
 

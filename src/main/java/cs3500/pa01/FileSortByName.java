@@ -1,9 +1,5 @@
 package cs3500.pa01;
 
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Comparator;
 
 public class FileSortByName implements Comparator<FileInformation>{

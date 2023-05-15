@@ -1,7 +1,5 @@
 package cs3500.pa01;
 
-import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Comparator;
 
 public class FileSortByModified implements Comparator<FileInformation>{

@@ -5,21 +5,18 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.file.Path;
-import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class FileProcessor {
-  public void processFiles(String compiledFile, Path mdFile) throws IOException {
-    Scanner input = null;
+  public void processFiles(String compiledFile, Path mdFile) {
     File studyGuide = new File(mdFile.toString());
-    BufferedWriter writer = null;
 
     try {
-      input = new Scanner(compiledFile);
-      writer = new BufferedWriter(new FileWriter(studyGuide));
-      Pattern pattern = Pattern.compile("\\[\\[(.*?)\\]\\]");
+      Scanner input = new Scanner(compiledFile);
+      BufferedWriter writer = new BufferedWriter(new FileWriter(studyGuide));
+      Pattern pattern = Pattern.compile("\\[\\[(.*?)]]");
 //      Matcher matcher = pattern.matcher(compiledFile);
 
       while (input.hasNextLine()) {

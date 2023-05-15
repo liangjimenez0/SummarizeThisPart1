@@ -5,7 +5,6 @@ import java.nio.file.FileVisitResult;
 import java.nio.file.FileVisitor;
 import java.nio.file.Path;
 import java.nio.file.attribute.BasicFileAttributes;
-import java.nio.file.attribute.FileTime;
 import java.util.ArrayList;
 
 import static java.nio.file.FileVisitResult.CONTINUE;
@@ -33,7 +32,7 @@ public class FileTreeWalkerVisitor implements FileVisitor<Path> {
 
   @Override
   public FileVisitResult preVisitDirectory(Path dir,
-                                           BasicFileAttributes attrs) throws IOException {
+                                           BasicFileAttributes attrs) {
     System.out.format("Starting Directory: %s%n", dir);
     return CONTINUE;
   }

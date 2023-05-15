@@ -3,8 +3,6 @@ package cs3500.pa01;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.util.Collections;
-import java.util.Scanner;
 
 /**
  * This is the main driver of this project.

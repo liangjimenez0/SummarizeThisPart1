@@ -1,7 +1,5 @@
 package cs3500.pa01;
 
-import java.io.File;
-import java.util.ArrayList;
 import java.util.Comparator;
 
 public class FileSortByCreated implements Comparator<FileInformation>{
