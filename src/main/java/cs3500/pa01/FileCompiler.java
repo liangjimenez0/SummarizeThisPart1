@@ -5,8 +5,18 @@ import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+/**
+ * Represents the FileCompiler class that is
+ * responsible for compiling the file
+ */
 public class FileCompiler {
   StringBuilder builder = new StringBuilder();
+
+  /**
+   * Compiles a given array list into one String Builder
+   *
+   * @param mdFiles An ArrayList of FileInformation that needs to be compiled into one string
+   */
   public void compile(ArrayList<FileInformation> mdFiles) {
 
     ArrayList<Path> pathList = new ArrayList<>();
@@ -28,6 +38,12 @@ public class FileCompiler {
       }
     }
   }
+
+  /**
+   * Returns the compiled string of array list
+   *
+   * @return The compiled string
+   */
   public String getCompiled() {
     return builder.toString();
   }

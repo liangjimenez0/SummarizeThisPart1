@@ -9,7 +9,20 @@ import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+/**
+ * Represents the FileProcessor class that is responsible
+ * for processing a file into a study guide with just the headers
+ * and important information
+ */
 public class FileProcessor {
+  /**
+   * Reads through a string and outputs a line if either it contains
+   * a # or is surrounded in [[""]] without the double brackets and with a bullet point
+   * to the given file path, representing the study guide.
+   *
+   * @param compiledFile The compiled string of all the content from all the files
+   * @param mdFile       The path of where the study guide should be located
+   */
   public void processFiles(String compiledFile, Path mdFile) {
     File studyGuide = new File(mdFile.toString());
 
@@ -17,14 +30,19 @@ public class FileProcessor {
       Scanner input = new Scanner(compiledFile);
       BufferedWriter writer = new BufferedWriter(new FileWriter(studyGuide));
       Pattern pattern = Pattern.compile("\\[\\[(.*?)]]");
-//      Matcher matcher = pattern.matcher(compiledFile);
+
+      boolean firstLine = true;
 
       while (input.hasNextLine()) {
         String line = input.nextLine();
         Matcher matcher = pattern.matcher(line);
 
         if (line.startsWith("#")) {
-          writer.newLine();
+          if (!firstLine) {
+            writer.newLine();
+          } else {
+            firstLine = false;
+          }
           writer.write(line + System.lineSeparator());
         } else if (matcher.find()) {
           writer.write("- " + matcher.group(1) + System.lineSeparator());
