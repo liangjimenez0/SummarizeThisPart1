@@ -26,24 +26,18 @@ class FileProcessorTest {
    */
   @BeforeEach
   void setup() {
-    file1 = "";
     processor = new FileProcessor();
-    mdFile1 = Path.of("files.md");
+    mdFile1 = Path.of("empty.pdf");
+    input = null;
+    builder = new StringBuilder();
 
+    file1 = "";
     file2 = """
         # Java Arrays
         - [[An **array** is a collection of variables of the same type]], referred to\s
         by a common name.\s
         - In Java, arrays are objects, and must be created dynamically (at runtime).""";
     file3 = "Hello my name is Liang";
-
-    input = null;
-    builder = new StringBuilder();
-    try {
-      input = new Scanner(mdFile1);
-    } catch (IOException e) {
-      System.exit(1);
-    }
   }
 
   /**
@@ -52,13 +46,19 @@ class FileProcessorTest {
    */
   @Test
   void processFiles1() {
+    try {
+      input = new Scanner(mdFile1);
+    } catch (IOException e) {
+      throw new RuntimeException(e);
+    }
+
     processor.processFiles(file1, mdFile1);
 
     while (input.hasNext()) {
       builder.append(input.nextLine()).append(System.lineSeparator());
     }
-    assertEquals(file1, builder.toString());
 
+    assertEquals(file1, builder.toString());
   }
 
   /**
@@ -67,6 +67,12 @@ class FileProcessorTest {
    */
   @Test
   void processFiles2() {
+
+    try {
+      input = new Scanner(mdFile1);
+    } catch (IOException e) {
+      throw new RuntimeException(e);
+    }
 
     processor.processFiles(file2, mdFile1);
 
@@ -86,6 +92,11 @@ class FileProcessorTest {
    */
   @Test
   void processFiles3() {
+    try {
+      input = new Scanner(mdFile1);
+    } catch (IOException e) {
+      throw new RuntimeException(e);
+    }
 
     processor.processFiles(file3, mdFile1);
 

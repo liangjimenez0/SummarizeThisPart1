@@ -57,7 +57,7 @@ class MainTest {
    */
   @Test
   void error() {
-    String[] invalidArgs = {"not-a-path", "INVALID_FLAG", "not-a-path"};
+    String[] invalidArgs = {"/#bsdajk", "INVALID_FLAG", "/#bsdajk"};
     assertThrows(IllegalArgumentException.class, () -> Main.main(invalidArgs));
   }
 }
