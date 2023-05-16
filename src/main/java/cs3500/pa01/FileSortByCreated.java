@@ -6,7 +6,7 @@ import java.util.Comparator;
  * Represents the FileSortByCreated class that is responsible
  * for sorting a list of files by the date it was created
  */
-public class FileSortByCreated implements Comparator<FileInformation> {
+public class FileSortByCreated extends FileSort implements Comparator<FileInformation> {
   /**
    * Compares the date created of two objects
    *
@@ -18,4 +18,5 @@ public class FileSortByCreated implements Comparator<FileInformation> {
   public int compare(FileInformation o1, FileInformation o2) {
     return o1.getDateCreated().compareTo(o2.getDateCreated());
   }
+
 }

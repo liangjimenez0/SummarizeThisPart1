@@ -6,7 +6,7 @@ import java.util.Comparator;
  * Represents the FileSortByName class that is responsible
  * for sorting a list of files by the file name
  */
-public class FileSortByName implements Comparator<FileInformation> {
+public class FileSortByName extends FileSort implements Comparator<FileInformation> {
   /**
    * Compares the file name of two objects
    *
