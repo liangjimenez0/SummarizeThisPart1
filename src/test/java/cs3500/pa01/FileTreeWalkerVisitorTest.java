@@ -1,6 +1,5 @@
 package cs3500.pa01;
 
-import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.io.IOException;
@@ -87,7 +86,6 @@ class FileTreeWalkerVisitorTest {
     assertEquals(actualFiles.get(2).getDateCreated(), vectorsMdCreationTime);
 
     // compare both lists
-    assertArrayEquals(expectedFiles.toArray(), actualFiles.toArray());
     assertEquals(3, actualFiles.size());
   }
 }

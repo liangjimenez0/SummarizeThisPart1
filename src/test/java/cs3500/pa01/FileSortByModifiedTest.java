@@ -2,8 +2,6 @@ package cs3500.pa01;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import java.io.IOException;
-import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.attribute.FileTime;
 import java.time.Instant;
@@ -28,6 +26,7 @@ class FileSortByModifiedTest {
   FileTime fileMdCreationTime;
   FileTime fileMdModificationTime;
   FileInformation fileFile;
+  ArrayList<FileInformation> files = new ArrayList<>();
 
   /**
    * Sets up the variables for testing
@@ -55,6 +54,11 @@ class FileSortByModifiedTest {
     fileMdModificationTime = FileTime.from(Instant.parse("2023-05-15T17:42:25.188519087Z"));
     fileFile = new FileInformation(pathForFilesMd, "file.md", fileMdModificationTime,
         fileMdCreationTime);
+
+    files = new ArrayList<>();
+    files.add(arraysFile);
+    files.add(fileFile);
+    files.add(vectorsFile);
   }
 
   /**
@@ -62,22 +66,12 @@ class FileSortByModifiedTest {
    */
   @Test
   void sort() {
+    files.sort(new FileSortByModified());
 
-    FileTreeWalkerVisitor mfv = new FileTreeWalkerVisitor();
-
-    try {
-      Files.walkFileTree(Path.of(sampleinputsdirectory), mfv);
-    } catch (IOException e) {
-      throw new RuntimeException(e);
-    }
-
-    ArrayList<FileInformation> actualFiles = mfv.getMdFiles();
-    actualFiles.sort(new FileSortByModified());
-
-    assertEquals(3, actualFiles.size());
-    assertEquals(actualFiles.get(0), fileFile);
-    assertEquals(actualFiles.get(1), vectorsFile);
-    assertEquals(actualFiles.get(2), arraysFile);
+    assertEquals(3, files.size());
+    assertEquals(files.get(0), fileFile);
+    assertEquals(files.get(1), vectorsFile);
+    assertEquals(files.get(2), arraysFile);
   }
 
   /**

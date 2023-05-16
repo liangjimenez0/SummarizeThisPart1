@@ -29,6 +29,7 @@ class FileSortByCreatedTest {
   FileTime fileMdCreationTime;
   FileTime fileMdModificationTime;
   FileInformation fileFile;
+  ArrayList<FileInformation> files;
 
   /**
    * Sets up the variables for testing
@@ -56,6 +57,11 @@ class FileSortByCreatedTest {
     fileMdModificationTime = FileTime.from(Instant.parse("2023-05-15T17:42:25.188519087Z"));
     fileFile = new FileInformation(pathForFilesMd, "file.md", fileMdModificationTime,
         fileMdCreationTime);
+
+    files = new ArrayList<>();
+    files.add(arraysFile);
+    files.add(fileFile);
+    files.add(vectorsFile);
   }
 
   /**
@@ -73,13 +79,12 @@ class FileSortByCreatedTest {
       throw new RuntimeException(e);
     }
 
-    ArrayList<FileInformation> actualFiles = mfv.getMdFiles();
-    actualFiles.sort(new FileSortByCreated());
+    files.sort(new FileSortByCreated());
 
-    assertEquals(3, actualFiles.size());
-    assertEquals(actualFiles.get(0), arraysFile);
-    assertEquals(actualFiles.get(1), vectorsFile);
-    assertEquals(actualFiles.get(2), fileFile);
+    assertEquals(3, files.size());
+    assertEquals(files.get(0), arraysFile);
+    assertEquals(files.get(1), vectorsFile);
+    assertEquals(files.get(2), fileFile);
   }
 
   /**
